@@ -14,7 +14,7 @@ locales = {
 # Style warnings
 style_warnings = []
 
-def runTest(baseUrl, driver):
+def runTest(baseUrl, driver, browser):
 
     for locale in locales:
         tool_url = f'{baseUrl}/{locale}'

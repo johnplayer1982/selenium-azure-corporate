@@ -25,7 +25,7 @@ tests = {
 # Run
 for key, value in tests.items():
     print('> Testing {}\n'.format(key))
-    value.runTest(baseUrl, driver)
+    value.runTest(baseUrl, driver, browser)
     print('\n> End of {} test\n'.format(key))
 
 driver.close()
