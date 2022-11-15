@@ -12,7 +12,7 @@ api_session = requests.Session()
 api_session.auth = (username, authkey)
 test_result = None
 build = build
-release = "Azure Tools Development - {}".format(build)
+release = "Money Helper Corporate - {}".format(build)
 
 def setCaps(platform, browser, version):
     caps = {
