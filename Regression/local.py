@@ -1,8 +1,7 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-import os, platform, time
+import platform
 
-import _template
+import bio_profile
 
 baseUrl = "https://www.moneyhelper.org.uk"
 
@@ -19,7 +18,7 @@ else:
 
 # Specify tests
 tests = {
-    "Example Test" : _template,
+    "Bio Profile" : bio_profile,
 }
 
 # Run

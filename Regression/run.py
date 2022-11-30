@@ -1,6 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-import os, requests, time
+import os, requests
 
 username = os.getenv("CBT_USERNAME")
 authkey = os.getenv("CBT_AUTHKEY")
@@ -57,7 +56,7 @@ def clean_up(driver, test_result):
 # ---------- Tools ---------- #
 
 # Import the tools
-import _template
+import bio_profile
 
 # Set the caps
 caps = setCaps(
@@ -71,7 +70,7 @@ driver = get_driver()
 
 # Specify the tests
 tests = {
-    "Example" : _template,
+    "Bio Profile" : bio_profile,
 }
 
 # Run the tests
