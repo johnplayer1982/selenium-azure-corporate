@@ -56,7 +56,10 @@ def clean_up(driver, test_result):
 # ---------- Tools ---------- #
 
 # Import the tools
+import header
 import bio_profile
+import embed_youtube
+import hero
 
 # Set the caps
 caps = setCaps(
@@ -70,7 +73,10 @@ driver = get_driver()
 
 # Specify the tests
 tests = {
-    "Bio Profile" : bio_profile,
+    # "Header" : header,
+    # "Bio Profile" : bio_profile,
+    # "YouTube Embed" : embed_youtube,
+    # "Hero Image" : hero
 }
 
 # Run the tests

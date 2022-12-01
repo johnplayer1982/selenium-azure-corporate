@@ -1,7 +1,10 @@
 from selenium import webdriver
 import platform
 
+import header
 import bio_profile
+import embed_youtube
+import hero
 
 baseUrl = "https://www.moneyhelper.org.uk"
 
@@ -18,7 +21,10 @@ else:
 
 # Specify tests
 tests = {
+    "Header" : header,
     "Bio Profile" : bio_profile,
+    "YouTube Embed" : embed_youtube,
+    "Hero Image" : hero
 }
 
 # Run
