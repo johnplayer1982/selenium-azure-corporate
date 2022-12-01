@@ -20,7 +20,8 @@ from selenium.webdriver.common.by import By
 style_warnings = []
 
 # Selectors
-componentSelector = ''
+global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
+selectors = global_selectors.get_selectors()
 
 # Styles
 component_styles = {
@@ -47,12 +48,12 @@ def runTest(baseUrl, driver, browser):
 
     for url in component_urls:
         driver.get(url)
-        components = driver.find_elements(By.CSS_SELECTOR, componentSelector)
+        components = driver.find_elements(By.CSS_SELECTOR, selectors['dummy_selector'])
 
         if len(components):
             for component in components:
                 # Comment describing the element
-                check_styles(driver, selector=componentSelector, styles=component_styles, description='Element description')
+                check_styles(driver, selector=selectors['dummy_selector'], styles=component_styles, description='Element description')
 
                 # Run tests
         else:

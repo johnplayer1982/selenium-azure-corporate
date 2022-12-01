@@ -4,11 +4,8 @@ from selenium.webdriver.common.by import By
 style_warnings = []
 
 # Selectors
-hero_selector = 'div.heroImage'
-hero_image_container_selector = 'div.header-img'
-hero_image_selector = 'div.header-img > img'
-hero_title_container_selector = 'div.page-category'
-hero_title_text_selector = 'div.page-category > h1#page-title'
+global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
+selectors = global_selectors.get_selectors()
 
 # Styles
 hero_styles = {
@@ -34,12 +31,12 @@ def runTest(baseUrl, driver, browser):
 
     for url in component_urls:
         driver.get(url)
-        components = driver.find_elements(By.CSS_SELECTOR, hero_selector)
+        components = driver.find_elements(By.CSS_SELECTOR, selectors['hero_selector'])
 
         if len(components):
             for component in components:
                 # Comment describing the element
-                check_styles(driver, selector=hero_selector, styles=hero_styles, description='Hero Image')
+                check_styles(driver, selector=selectors['hero_selector'], styles=hero_styles, description='Hero Image')
 
                 # Run tests
         else:
