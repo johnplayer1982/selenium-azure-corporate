@@ -21,7 +21,7 @@ style_warnings = []
 
 # Selectors
 global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
-selectors = global_selectors.get_selectors()
+selectors = global_selectors.get_selector()
 
 # Styles
 component_styles = {
