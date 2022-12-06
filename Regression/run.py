@@ -1,4 +1,5 @@
 from selenium import webdriver
+from importlib.machinery import SourceFileLoader
 import os, requests
 
 username = os.getenv("CBT_USERNAME")
@@ -73,11 +74,19 @@ driver = get_driver()
 
 # Specify the tests
 tests = {
-    # "Header" : header,
-    # "Bio Profile" : bio_profile,
-    # "YouTube Embed" : embed_youtube,
-    # "Hero Image" : hero
+    "Header" : header,
+    "Bio Profile" : bio_profile,
+    "YouTube Embed" : embed_youtube,
+    "Hero Image" : hero
 }
+
+def auth(driver, baseUrl):
+    authtest = SourceFileLoader('getauthtest', '../Lib/testauth.py').load_module()
+    driver.get(baseUrl)
+    authtest.authuser(driver)
+
+if "maps-test-aem-author" in baseUrl:
+    auth(driver, baseUrl)
 
 # Run the tests
 test_result = run_tests(tests, browser=caps.get("browserName"))

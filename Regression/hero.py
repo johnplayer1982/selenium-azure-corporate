@@ -26,7 +26,7 @@ def runTest(baseUrl, driver, browser):
 
     # Component URLs - Where to find the component
     component_urls = [
-        f"{baseUrl}/path/to/page"
+        f"{baseUrl}/content/maps/mps/en/jp-test/mps-double-column.html?wcmmode=disabled"
     ]
 
     for url in component_urls:

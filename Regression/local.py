@@ -1,4 +1,5 @@
 from selenium import webdriver
+from importlib.machinery import SourceFileLoader
 import platform
 
 import header
@@ -6,7 +7,7 @@ import bio_profile
 import embed_youtube
 import hero
 
-baseUrl = "https://www.moneyhelper.org.uk"
+baseUrl = "http://maps-test-aem-author.uksouth.cloudapp.azure.com"
 
 if platform.system() == "Darwin":
     # browser = "Safari"
@@ -26,6 +27,13 @@ tests = {
     "YouTube Embed" : embed_youtube,
     "Hero Image" : hero
 }
+
+def auth(driver, baseUrl):
+    authtest = SourceFileLoader('getauthtest', '../Lib/testauth.py').load_module()
+    driver.get(baseUrl)
+    authtest.authuser(driver)
+
+auth(driver, baseUrl)
 
 # Run
 for key, value in tests.items():
