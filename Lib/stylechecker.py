@@ -43,7 +43,7 @@
 #                print('+ {}'.format(item[0]))
 
 # If strict_styles False, then errors are passed as warnings, if True the errors raise assertion errors.
-strict_styles = False
+strict_styles = True
 
 def checkstyle(element, dict, description):
     style_warnings = []
