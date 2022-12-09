@@ -22,7 +22,7 @@ def check_styles(driver, selector, styles, description):
     )
     style_warnings.append(styles)
 
-def runTest(baseUrl, driver, browser):
+def runTest(baseUrl, driver, browser, requires_auth):
 
     # Component URLs - Where to find the component
     component_urls = [
@@ -31,16 +31,17 @@ def runTest(baseUrl, driver, browser):
 
     for url in component_urls:
         driver.get(url)
-        components = driver.find_elements(By.CSS_SELECTOR, selectors['header_selector'])
+        header = driver.find_elements(By.CSS_SELECTOR, selectors['header_selector'])
 
-        if len(components):
-            for component in components:
+        if len(header):
+            for component in header:
                 # Comment describing the element
                 check_styles(driver, selector=selectors['header_selector'], styles=header_styles, description='Header')
 
                 # Run tests
         else:
-            print(' - Component not found')
+            error = f"> Error: Header not found: {url}"
+            raise AssertionError(error)
 
     # Return any style warnings
     if len(style_warnings):

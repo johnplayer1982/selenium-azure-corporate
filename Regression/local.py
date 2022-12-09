@@ -9,6 +9,10 @@ import hero
 
 baseUrl = "http://maps-test-aem-author.uksouth.cloudapp.azure.com"
 
+# Certain things wont work if we need to auth to see the site, these will be warnings rather than failues:
+# Set to false when testing on a dispatcher URL
+requires_auth = True
+
 if platform.system() == "Darwin":
     # browser = "Safari"
     # driver = webdriver.Safari()
@@ -33,12 +37,13 @@ def auth(driver, baseUrl):
     driver.get(baseUrl)
     authtest.authuser(driver)
 
-auth(driver, baseUrl)
+if requires_auth:
+    auth(driver, baseUrl)
 
 # Run
 for key, value in tests.items():
     print('> Testing {}\n'.format(key))
-    value.runTest(baseUrl, driver, browser)
+    value.runTest(baseUrl, driver, browser, requires_auth)
     print('\n> End of {} test\n'.format(key))
 
 driver.close()

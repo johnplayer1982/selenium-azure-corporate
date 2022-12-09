@@ -22,7 +22,7 @@ def check_styles(driver, selector, styles, description):
     )
     style_warnings.append(styles)
 
-def runTest(baseUrl, driver, browser):
+def runTest(baseUrl, driver, browser, requires_auth):
 
     # Component URLs - Where to find the component
     component_urls = [

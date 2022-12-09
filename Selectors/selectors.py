@@ -2,7 +2,7 @@ def get_selector():
 
     selectors = {
         # Header
-        "header_selector" : 'div.header',
+        "header_selector" : 'div.experiencefragment-header',
         "header_left_container_selector" : 'div.left.header_side',
 
         # Logo
