@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 
 style_warnings = []
 
+# Lib
+resize = SourceFileLoader('getresize', '../Lib/resize.py').load_module()
+
 # Selectors
 global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
 selectors = global_selectors.get_selector()
@@ -31,14 +34,15 @@ def runTest(baseUrl, driver, browser, requires_auth):
 
     for url in component_urls:
         driver.get(url)
-        header = driver.find_elements(By.CSS_SELECTOR, selectors['header_selector'])
+        resize.resizeDesktop(driver)
+        headers = driver.find_elements(By.CSS_SELECTOR, selectors['header_selector'])
 
-        if len(header):
-            for component in header:
-                # Comment describing the element
+        if len(headers):
+            for header in headers:
                 check_styles(driver, selector=selectors['header_selector'], styles=header_styles, description='Header')
 
                 # Run tests
+
         else:
             error = f"> Error: Header not found: {url}"
             raise AssertionError(error)
