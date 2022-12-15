@@ -1,8 +1,6 @@
 from importlib.machinery import SourceFileLoader
 from selenium.webdriver.common.by import By
 
-style_warnings = []
-
 # Selectors
 global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
 selectors = global_selectors.get_selector()
@@ -20,9 +18,8 @@ def check_styles(driver, selector, styles, description):
         styles,
         description
     )
-    style_warnings.append(styles)
 
-def runTest(baseUrl, driver, browser, requires_auth):
+def runTest(baseUrl, driver, browser, devmode):
 
     # Component URLs - Where to find the component
     component_urls = [
@@ -41,7 +38,3 @@ def runTest(baseUrl, driver, browser, requires_auth):
                 # Run tests
         else:
             print(' - Component not found')
-
-    # Return any style warnings
-    if len(style_warnings):
-        return style_warnings

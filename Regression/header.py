@@ -1,7 +1,6 @@
 from importlib.machinery import SourceFileLoader
 from selenium.webdriver.common.by import By
-
-style_warnings = []
+import requests
 
 # Lib
 resize = SourceFileLoader('getresize', '../Lib/resize.py').load_module()
@@ -23,9 +22,8 @@ def check_styles(driver, selector, styles, description):
         styles,
         description
     )
-    style_warnings.append(styles)
 
-def runTest(baseUrl, driver, browser, requires_auth):
+def runTest(baseUrl, driver, browser, devmode):
 
     # Component URLs - Where to find the component
     component_urls = [
@@ -41,12 +39,20 @@ def runTest(baseUrl, driver, browser, requires_auth):
             for header in headers:
                 check_styles(driver, selector=selectors['header_selector'], styles=header_styles, description='Header')
 
-                # Run tests
+                # Logo
+                print(' - Checking Logo')
+                logo_container = driver.find_element(By.CSS_SELECTOR, selectors['logo_container_selector'])
+                logo_links = driver.find_elements(By.CSS_SELECTOR, selectors['logo_link_selector'])
+                logo_image = driver.find_element(By.CSS_SELECTOR, selectors['logo_image_selector'])
+
+                assert logo_container and logo_links and logo_image
+                print('  + Logo container, link and image elements found')
+
+                logo_link_href = logo_links[1].get_attribute('href')
+                logo_link_status = requests.get(logo_link_href).status_code
+                if not devmode:
+                    assert logo_link_status == 200
 
         else:
             error = f"> Error: Header not found: {url}"
             raise AssertionError(error)
-
-    # Return any style warnings
-    if len(style_warnings):
-        return style_warnings

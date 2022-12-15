@@ -32,9 +32,6 @@ for url in urls:
     driver.get(url)
     print("Visiting {}".format(url))
 
-    # List to hold any style warnings
-    style_warnings = []
-
     # ----------- Start ---------- #
 
     dismisscookie.dismissCookieBanner(driver)
@@ -45,14 +42,5 @@ for url in urls:
         print(selector)
 
     # ----------- End ---------- #
-
-# Return any style warnings (If strict styles set to false in Helpers/stylechecker.py)
-if len(style_warnings):
-    print('\nCSS Warnings\n------------')
-    for items in style_warnings:
-        if not items == None:
-            for item in items:
-                for entry in item:
-                    print('+ {}'.format(entry))
 
 driver.close()

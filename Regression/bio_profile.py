@@ -2,8 +2,6 @@ from importlib.machinery import SourceFileLoader
 from selenium.webdriver.common.by import By
 import requests
 
-style_warnings = []
-
 # Selectors
 global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
 selectors = global_selectors.get_selector()
@@ -38,9 +36,8 @@ def check_styles(driver, selector, styles, description):
         styles,
         description
     )
-    style_warnings.append(styles)
 
-def runTest(baseUrl, driver, browser, requires_auth):
+def runTest(baseUrl, driver, browser, devmode):
 
     # Component URLs - Where to find the component
     component_urls = [
@@ -94,7 +91,7 @@ def runTest(baseUrl, driver, browser, requires_auth):
                     print(' - Email address not found, optional field')
 
                 # Check status codes of image and link href, on dispatcher only
-                if not requires_auth:
+                if not devmode:
 
                     # Check status code of title link
                     if title_link_status == 200:
@@ -120,7 +117,3 @@ def runTest(baseUrl, driver, browser, requires_auth):
             error = f'> Bio profile component expected on {url} but not found'
             raise AssertionError(error)
             print(' - Component not found')
-
-    # Return any style warnings
-    if len(style_warnings):
-        return style_warnings

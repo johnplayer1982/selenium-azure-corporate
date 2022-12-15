@@ -13,6 +13,8 @@ api_session.auth = (username, authkey)
 test_result = None
 build = build
 release = "Money Helper Corporate - {}".format(build)
+requires_auth = True
+devmode = False
 
 def setCaps(platform, browser, version):
     caps = {
@@ -37,7 +39,7 @@ def run_tests(tests, browser):
     try:
         for key, value in tests.items():
             print('Testing {}'.format(key))
-            value.runTest(baseUrl, driver, browser)
+            value.runTest(baseUrl, driver, browser, devmode)
             print('End of {} test\n'.format(key))
         test_result = 'pass'
     except AssertionError as e:
@@ -80,13 +82,10 @@ tests = {
     "Hero Image" : hero
 }
 
-def auth(driver, baseUrl):
+if "maps-test-aem-author" in baseUrl:
     authtest = SourceFileLoader('getauthtest', '../Lib/testauth.py').load_module()
     driver.get(baseUrl)
     authtest.authuser(driver)
-
-if "maps-test-aem-author" in baseUrl:
-    auth(driver, baseUrl)
 
 # Run the tests
 test_result = run_tests(tests, browser=caps.get("browserName"))

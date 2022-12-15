@@ -27,26 +27,13 @@
 # ---------------------------------------------
 # To call from a tool script:
 # from importlib.machinery import SourceFileLoader
-# style_warnings = []
 # # Import the component script
 # tooltitlechecker = SourceFileLoader('gettooltitlechecker', '../Components/tool_title.py').load_module()
 # # Run as variable so we can store what is returned
 # title_styles = tooltitlechecker.check_tool_title(driver)
-# # Append to style warning list
-# style_warnings.append(title_styles)
-# # Return any style warnings (If strict styles set to false in Helpers/stylechecker.py)
-# if len(style_warnings):
-#     print('\nCSS Warnings\n------------')
-#     for items in style_warnings:
-#         for item in items:
-#             if len(item):
-#                print('+ {}'.format(item[0]))
-
-# If strict_styles False, then errors are passed as warnings, if True the errors raise assertion errors.
-strict_styles = True
 
 def checkstyle(element, dict, description):
-    style_warnings = []
+
     for attribute, style in dict.items():
         print(' - Checking style {attribute} for {description}'.format(attribute=attribute, description=description))
         expected_style = style
@@ -58,9 +45,4 @@ def checkstyle(element, dict, description):
         else:
             error_string = "{description}: {attribute} incorrect - Actual: {actual}, Expected to contain: {expected}".format(description=description, attribute=attribute, expected=expected_style, actual=actual_style)
             print('   X {} NOT OK'.format(attribute))
-            if strict_styles:
-                raise AssertionError(error_string)
-            else:
-                style_warnings.append(error_string)
-
-    return style_warnings
+            raise AssertionError(error_string)

@@ -8,6 +8,7 @@ import embed_youtube
 import hero
 
 baseUrl = "http://maps-test-aem-author.uksouth.cloudapp.azure.com"
+devmode = True
 
 # Certain things wont work if we need to auth to see the site, these will be warnings rather than failues:
 # Set to false when testing on a dispatcher URL
@@ -32,18 +33,15 @@ tests = {
     "Hero Image" : hero
 }
 
-def auth(driver, baseUrl):
+if requires_auth:
     authtest = SourceFileLoader('getauthtest', '../Lib/testauth.py').load_module()
     driver.get(baseUrl)
     authtest.authuser(driver)
 
-if requires_auth:
-    auth(driver, baseUrl)
-
 # Run
 for key, value in tests.items():
     print('> Testing {}\n'.format(key))
-    value.runTest(baseUrl, driver, browser, requires_auth)
+    value.runTest(baseUrl, driver, browser, devmode)
     print('\n> End of {} test\n'.format(key))
 
 driver.close()
