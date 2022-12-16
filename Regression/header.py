@@ -52,6 +52,7 @@ def runTest(baseUrl, driver, browser, devmode):
                 logo_link_status = requests.get(logo_link_href).status_code
                 if not devmode:
                     assert logo_link_status == 200
+                    print(f' - Logo link status OK: {logo_link_status}')
 
         else:
             error = f"> Error: Header not found: {url}"
