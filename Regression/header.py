@@ -127,6 +127,21 @@ def runTest(baseUrl, driver, browser, devmode):
                     a.move_by_offset(300, 300).perform()
                     print(' - Mouse moved by offset to close submenu')
 
+                print('\nChecking mobile navigation')
+                resize.resizeMobile(driver)
+                driver.get(driver.current_url)
+                # Mobile menu button
+                mobile_menu_btn = driver.find_element(By.CSS_SELECTOR, selectors['menu_mobile_toggle_selector'])
+                if mobile_menu_btn.value_of_css_property('display') == 'block':
+                    print('- Mobile menu button visible')
+                else:
+                    error = '> Mobile menu not button visible'
+                    raise AssertionError(error)
+                
+                # Mobile menu
+                mobile_menu = driver.find_element(By.CSS_SELECTOR, selectors['menu_container_selector'])
+                mobile_menu_display = mobile_menu.get_attribute('style')
+                print(f' - Menu inline style: {mobile_menu_display}')
 
         else:
             error = f"> Error: Header not found: {url}"
