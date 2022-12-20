@@ -13,8 +13,10 @@ def get_selector():
         # Navigation
         "menu_container_selector" : 'nav.main_menu_container',
         "menu_desktop_selector" : 'ul.menu.desktop-ul',
+        "menu_desktop_top_level_with_submenu" : 'ul.menu.desktop-ul > li.menu-item.menu-item-has-children',
         "submenu_selector" : 'ul.sub-menu',
         "menu_list_item_selector" : 'li.menu-item',
+        "menu_list_item_link_selector" : "li.menu-item > a",
         "menu_language_item_selector" : 'li.lang-item',
         "menu_mobile_selector" : 'ul.menu.mobile-ul',
         "menu_mobile_toggle_selector" : 'div.mobile-navigation-toggle',
