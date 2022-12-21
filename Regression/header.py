@@ -34,6 +34,7 @@ def runTest(baseUrl, driver, browser, devmode):
     for url in component_urls:
         driver.get(url)
         resize.resizeDesktop(driver)
+        time.sleep(1)
         headers = driver.find_elements(By.CSS_SELECTOR, selectors['header_selector'])
 
         if len(headers):
