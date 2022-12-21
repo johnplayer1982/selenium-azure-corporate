@@ -14,7 +14,7 @@ test_result = None
 build = build
 release = "Money Helper Corporate - {}".format(build)
 requires_auth = True
-devmode = False
+devmode = True
 
 def setCaps(platform, browser, version):
     caps = {
