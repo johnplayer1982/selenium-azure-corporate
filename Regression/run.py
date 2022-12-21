@@ -82,7 +82,7 @@ tests = {
     "Hero Image" : hero
 }
 
-if "maps-test-aem-author" in baseUrl:
+if requires_auth:
     authtest = SourceFileLoader('getauthtest', '../Lib/testauth.py').load_module()
     driver.get(baseUrl)
     authtest.authuser(driver)
