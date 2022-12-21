@@ -9,6 +9,14 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+schedules:
+- cron: "0 17 * * *"
+  displayName: Every day at 5pm
+  branches:
+    include: 
+    - main
+  always: true
+
 steps:
 - task: CBTMain@0
   inputs:
