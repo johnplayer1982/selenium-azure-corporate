@@ -18,8 +18,12 @@ def get_selector():
         "menu_list_item_selector" : 'li.menu-item',
         "menu_list_item_link_selector" : "li.menu-item > a",
         "menu_language_item_selector" : 'li.lang-item',
-        "menu_mobile_selector" : 'ul.menu.mobile-ul',
+        # Mobile specific
         "menu_mobile_toggle_selector" : 'div.mobile-navigation-toggle',
+        "menu_mobile_selector" : 'ul.menu.mobile-ul',
+        "menu_mobile_items_selector" : 'ul.menu.mobile-ul > li.menu-item-has-children',
+        'menu_mobile_item_link_selector' : '> a',
+        "menu_mobile_sub_items_selector" : 'ul.menu.mobile-ul > li.menu-item-has-children ul.sub-menu',
 
         # Hero Image
         'hero_selector' : 'div.heroImage',
