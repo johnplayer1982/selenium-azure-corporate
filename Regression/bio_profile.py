@@ -1,6 +1,6 @@
 from importlib.machinery import SourceFileLoader
 from selenium.webdriver.common.by import By
-import requests
+import requests, time
 
 # Selectors
 global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
@@ -109,6 +109,51 @@ def runTest(baseUrl, driver, browser, devmode):
                         raise AssertionError(error)
                     else:
                         error = f'> {url} Bio image src error: {title_link_status}'
+                        raise AssertionError(error)
+
+                # Bio profile content, expandable when content added
+                try:
+                    bio_profile_content = bio_profile.find_element(By.CSS_SELECTOR, selectors['bio_profile_content_container_selector'])
+                    bio_profile_present = True
+                    print(' - Bio profile content container found')
+                except:
+                    bio_profile_present = False
+                    print(' - Bio profile content not added to page (optional elements)')
+
+                if bio_profile_present:
+                    bio_profile_content_intro = bio_profile.find_element(By.CSS_SELECTOR, selectors['bio_profile_detail_intro_selector'])
+                    print(' - Bio profile content text found')
+
+                    bio_profile_more_content = bio_profile.find_element(By.CSS_SELECTOR, selectors['bio_profile_detail_more_content_selector'])
+                    bio_profile_more_content_style = bio_profile_more_content.get_attribute('style')
+                    if bio_profile_more_content_style == "display: none;":
+                        print(' - Bio profile more content hidden by default')
+                    else:
+                        error = '> Bio profile more content NOT hidden by default'
+                        raise AssertionError(error)
+
+                    bio_profile_more_content_trigger = bio_profile.find_element(By.CSS_SELECTOR, selectors['bio_profile_detail_showhide_selector'])
+                    print(' - Read more link found')
+
+                    bio_profile_more_content_trigger.click()
+                    print(' - Read more link clicked')
+                    time.sleep(1)
+                    print(' - Allowing 1 seconds for the content to display')
+                    bio_profile_more_content_style = bio_profile_more_content.get_attribute('style')
+                    if bio_profile_more_content_style:
+                        error = f'> Bio profile more content text has unexpected inline style: {bio_profile_more_content_style}'
+                        raise AssertionError(error)
+                    else:
+                        print(' - More content container has no styles, expected as displayed')
+                    
+                    bio_profile_more_content_trigger.click()
+                    print(' - Read more link clicked again')
+                    time.sleep(1)
+                    bio_profile_more_content_style = bio_profile_more_content.get_attribute('style')
+                    if bio_profile_more_content_style == "display: none;":
+                        print(' - Bio profile more content hidden')
+                    else:
+                        error = '> Bio profile more content NOT hidden'
                         raise AssertionError(error)
 
         else:

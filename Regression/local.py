@@ -28,9 +28,9 @@ else:
 # Specify tests
 tests = {
     "Header" : header,
-    # "Bio Profile" : bio_profile,
-    # "YouTube Embed" : embed_youtube,
-    # "Hero Image" : hero
+    "Bio Profile" : bio_profile,
+    "YouTube Embed" : embed_youtube,
+    "Hero Image" : hero
 }
 
 if requires_auth:
