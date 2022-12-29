@@ -15,6 +15,10 @@ header_styles = {
     "padding" : "10px",
 }
 
+menu_item_text_styles = {
+    "font-family" : "Roboto"
+}
+
 def check_styles(driver, selector, styles, description):
     stylechecker = SourceFileLoader('getstylechecker', '../Lib/stylechecker.py').load_module()
     element = driver.find_element(By.CSS_SELECTOR, selector)
@@ -72,6 +76,8 @@ def desktop_navigation(driver, devmode):
     for menu_item in top_level_desktop_nav_list_items:
 
         menu_item_text = menu_item.find_element(By.CSS_SELECTOR, 'a > span')
+        assert menu_item_text.value_of_css_property('font-family') == "Roboto"
+        check_styles(driver, selector=selectors['menu_list_item_link_selector'], styles=menu_item_text_styles, description='Menu item text')
         print(f' - Checking menu item: {menu_item_text.text}')
         a = ActionChains(driver)
         m = menu_item

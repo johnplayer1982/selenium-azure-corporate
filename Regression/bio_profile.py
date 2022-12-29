@@ -2,6 +2,8 @@ from importlib.machinery import SourceFileLoader
 from selenium.webdriver.common.by import By
 import requests, time
 
+resize = SourceFileLoader('getresize', '../Lib/resize.py').load_module()
+
 # Selectors
 global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
 selectors = global_selectors.get_selector()
@@ -41,6 +43,8 @@ def runTest(baseUrl, driver, browser, devmode):
     component_urls = [
         f"{baseUrl}/content/maps/mps/en/jp-test/mps-double-column.html?wcmmode=disabled"
     ]
+
+    resize.resizeDesktop(driver)
 
     for url in component_urls:
         driver.get(url)

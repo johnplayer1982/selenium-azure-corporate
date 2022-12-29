@@ -10,6 +10,10 @@ hero_styles = {
     "padding" : "10px",
 }
 
+hero_title_styles = {
+    "font-family" : "Roboto"
+}
+
 def check_styles(driver, selector, styles, description):
     stylechecker = SourceFileLoader('getstylechecker', '../Lib/stylechecker.py').load_module()
     element = driver.find_element(By.CSS_SELECTOR, selector)
@@ -28,13 +32,15 @@ def runTest(baseUrl, driver, browser, devmode):
 
     for url in component_urls:
         driver.get(url)
-        components = driver.find_elements(By.CSS_SELECTOR, selectors['hero_selector'])
+        heros = driver.find_elements(By.CSS_SELECTOR, selectors['hero_selector'])
 
-        if len(components):
-            for component in components:
+        if len(heros):
+            for hero in heros:
                 # Comment describing the element
                 check_styles(driver, selector=selectors['hero_selector'], styles=hero_styles, description='Hero Image')
 
-                # Run tests
+                hero_title = hero.find_element(By.CSS_SELECTOR, selectors['hero_title_text_selector'])
+                check_styles(driver, selector=selectors['hero_title_text_selector'], styles=hero_title_styles, description='Hero Title Text')
+
         else:
             print(' - Component not found')
