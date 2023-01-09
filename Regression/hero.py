@@ -23,6 +23,13 @@ def check_styles(driver, selector, styles, description):
         description
     )
 
+def check_hero_image(driver, hero):
+    check_styles(driver, selector=selectors['hero_selector'], styles=hero_styles, description='Hero Image')
+
+def check_hero_title(driver, hero):
+    hero_title = hero.find_element(By.CSS_SELECTOR, selectors['hero_title_text_selector'])
+    check_styles(driver, selector=selectors['hero_title_text_selector'], styles=hero_title_styles, description='Hero Title Text')
+
 def runTest(baseUrl, driver, browser, devmode):
 
     # Component URLs - Where to find the component
@@ -36,11 +43,8 @@ def runTest(baseUrl, driver, browser, devmode):
 
         if len(heros):
             for hero in heros:
-                # Comment describing the element
-                check_styles(driver, selector=selectors['hero_selector'], styles=hero_styles, description='Hero Image')
-
-                hero_title = hero.find_element(By.CSS_SELECTOR, selectors['hero_title_text_selector'])
-                check_styles(driver, selector=selectors['hero_title_text_selector'], styles=hero_title_styles, description='Hero Title Text')
+                check_hero_image(driver, hero)
+                check_hero_title(driver, hero)
 
         else:
             print(' - Component not found')

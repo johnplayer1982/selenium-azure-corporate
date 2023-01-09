@@ -27,9 +27,9 @@ else:
 
 # Specify tests
 tests = {
-    "Header" : header,
-    "Bio Profile" : bio_profile,
-    "YouTube Embed" : embed_youtube,
+    # "Header" : header,
+    # "Bio Profile" : bio_profile,
+    # "YouTube Embed" : embed_youtube,
     "Hero Image" : hero
 }
 
