@@ -80,6 +80,14 @@ def get_selector():
         'primary_button_selector' : 'a.cmp-button__primary',
         'secondary_button_selector' : 'a.cmp-button__secondary',
 
+        # Link list
+        'link_list_container_selector' : 'div.linklist',
+        'link_list_content_container_selector' : 'div.content-container',
+        'link_list_heading_selector' : 'h2',
+        'link_list_list_selector' : 'ul',
+        'link_list_list_item_selector' : 'li',
+        'link_list_list_item_link_selector' : 'a',
+
         # Dummy
         'dummy_selector' : 'body',
     }

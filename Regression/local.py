@@ -9,6 +9,7 @@ import hero
 import accordion
 import image
 import buttons
+import link_list
 
 baseUrl = "http://maps-test-aem-author.uksouth.cloudapp.azure.com"
 devmode = True
@@ -36,7 +37,8 @@ tests = {
     "Hero Image" : hero,
     "Accordion" : accordion,
     "Image" : image,
-    "Buttons" : buttons
+    "Buttons" : buttons,
+    "Link List" : link_list
 }
 
 if requires_auth:

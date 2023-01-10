@@ -66,6 +66,7 @@ import hero
 import accordion
 import image
 import buttons
+import link_list
 
 # Set the caps
 caps = setCaps(
@@ -86,6 +87,7 @@ tests = {
     "Accordion" : accordion,
     "Image" : image,
     "Buttons" : buttons,
+    "Link List" : link_list,
 }
 
 if requires_auth:
