@@ -62,10 +62,18 @@ def get_selector():
         'youtube_download_link_text_selector' : 'span.cmp-youtube__download-transcript-text',
         'youtube_download_icon_selector' : 'span.cmp-youtube__download-transcript-icon',
 
+        # Accordion
         'accordion_selector' : 'div.accordion',
         'accordion_main_title_selector' : 'div.main-title',
         'accordion_sub_item' : 'div.item',
         'accordion_sub_item_content' : 'div.cmp-mps-accordion__sub-text',
+
+        # Image
+        'image_container_selector' : 'div.image',
+        'image_innaer_container_selector' : 'div.cmp-image',
+        'image_no_link_selector' : 'div.cmp-image__no-link',
+        'image_with_link_selector' : 'a.cmp-image__link',
+
 
         # Dummy
         'dummy_selector' : 'body',

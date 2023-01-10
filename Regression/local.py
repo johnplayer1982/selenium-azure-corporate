@@ -7,6 +7,7 @@ import bio_profile
 import embed_youtube
 import hero
 import accordion
+import image
 
 baseUrl = "http://maps-test-aem-author.uksouth.cloudapp.azure.com"
 devmode = True
@@ -32,7 +33,8 @@ tests = {
     "Bio Profile" : bio_profile,
     "YouTube Embed" : embed_youtube,
     "Hero Image" : hero,
-    "Accordion" : accordion
+    "Accordion" : accordion,
+    "Image" : image,
 }
 
 if requires_auth:
