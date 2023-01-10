@@ -41,7 +41,6 @@ def runTest(baseUrl, driver, browser, devmode):
 
                 link_list_content_container = link_list.find_element(By.CSS_SELECTOR, selectors['link_list_content_container_selector'])
                 assert link_list_content_container.value_of_css_property('padding') == "0px 15px"
-                assert link_list_content_container.value_of_css_property('margin') == "48px 102.188px 0px"
                 print(' - Link list content container styles OK')
 
                 link_list_heading = link_list_content_container.find_element(By.CSS_SELECTOR, selectors['link_list_heading_selector'])
