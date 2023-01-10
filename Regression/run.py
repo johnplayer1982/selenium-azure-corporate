@@ -63,6 +63,7 @@ import header
 import bio_profile
 import embed_youtube
 import hero
+import accordion
 
 # Set the caps
 caps = setCaps(
@@ -79,7 +80,8 @@ tests = {
     "Header" : header,
     "Bio Profile" : bio_profile,
     "YouTube Embed" : embed_youtube,
-    "Hero Image" : hero
+    "Hero Image" : hero,
+    "Accordion" : accordion,
 }
 
 if requires_auth:

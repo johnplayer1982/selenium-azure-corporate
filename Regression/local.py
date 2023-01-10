@@ -6,6 +6,7 @@ import header
 import bio_profile
 import embed_youtube
 import hero
+import accordion
 
 baseUrl = "http://maps-test-aem-author.uksouth.cloudapp.azure.com"
 devmode = True
@@ -27,10 +28,11 @@ else:
 
 # Specify tests
 tests = {
-    # "Header" : header,
-    # "Bio Profile" : bio_profile,
-    # "YouTube Embed" : embed_youtube,
-    "Hero Image" : hero
+    "Header" : header,
+    "Bio Profile" : bio_profile,
+    "YouTube Embed" : embed_youtube,
+    "Hero Image" : hero,
+    "Accordion" : accordion
 }
 
 if requires_auth:

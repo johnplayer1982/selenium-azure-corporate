@@ -62,6 +62,11 @@ def get_selector():
         'youtube_download_link_text_selector' : 'span.cmp-youtube__download-transcript-text',
         'youtube_download_icon_selector' : 'span.cmp-youtube__download-transcript-icon',
 
+        'accordion_selector' : 'div.accordion',
+        'accordion_main_title_selector' : 'div.main-title',
+        'accordion_sub_item' : 'div.item',
+        'accordion_sub_item_content' : 'div.cmp-mps-accordion__sub-text',
+
         # Dummy
         'dummy_selector' : 'body',
     }
