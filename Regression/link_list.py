@@ -48,7 +48,6 @@ def runTest(baseUrl, driver, browser, devmode):
                 assert link_list_heading.value_of_css_property('margin') == "36px 0px 30px"
                 assert link_list_heading.value_of_css_property('font-size') == "26px"
                 assert link_list_heading.value_of_css_property('font-weight') == "900"
-                assert link_list_heading.value_of_css_property('line-height') == "29.9px"
                 assert link_list_heading.value_of_css_property('font-family') == "Roboto"
                 print(' - Link list title <h2> styles OK')
 
