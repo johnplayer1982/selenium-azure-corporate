@@ -8,6 +8,7 @@ import embed_youtube
 import hero
 import accordion
 import image
+import buttons
 
 baseUrl = "http://maps-test-aem-author.uksouth.cloudapp.azure.com"
 devmode = True
@@ -35,6 +36,7 @@ tests = {
     "Hero Image" : hero,
     "Accordion" : accordion,
     "Image" : image,
+    "Buttons" : buttons
 }
 
 if requires_auth:

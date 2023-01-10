@@ -65,6 +65,7 @@ import embed_youtube
 import hero
 import accordion
 import image
+import buttons
 
 # Set the caps
 caps = setCaps(
@@ -84,6 +85,7 @@ tests = {
     "Hero Image" : hero,
     "Accordion" : accordion,
     "Image" : image,
+    "Buttons" : buttons,
 }
 
 if requires_auth:

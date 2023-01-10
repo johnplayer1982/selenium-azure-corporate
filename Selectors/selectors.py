@@ -74,6 +74,11 @@ def get_selector():
         'image_no_link_selector' : 'div.cmp-image__no-link',
         'image_with_link_selector' : 'a.cmp-image__link',
 
+        # Buttons
+        'button_container_selector' : 'div.button',
+        'button_inner_container_selector' : 'div.cmp-button',
+        'primary_button_selector' : 'a.cmp-button__primary',
+        'secondary_button_selector' : 'a.cmp-button__secondary',
 
         # Dummy
         'dummy_selector' : 'body',
