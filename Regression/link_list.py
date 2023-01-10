@@ -1,7 +1,7 @@
-# Usage
-# -----
 from importlib.machinery import SourceFileLoader
 from selenium.webdriver.common.by import By
+
+resize = SourceFileLoader('getresize', '../Lib/resize.py').load_module()
 
 # Selectors
 global_selectors = SourceFileLoader('getsselectors', '../Selectors/selectors.py').load_module()
@@ -28,6 +28,8 @@ def runTest(baseUrl, driver, browser, devmode):
         f"{baseUrl}/content/maps/mps/en/jp-test/mps-double-column.html?wcmmode=disabled"
     ]
 
+    resize.resizeDesktop(driver)
+
     for url in component_urls:
         driver.get(url)
         link_lists = driver.find_elements(By.CSS_SELECTOR, selectors['link_list_container_selector'])
@@ -39,12 +41,12 @@ def runTest(baseUrl, driver, browser, devmode):
 
                 link_list_content_container = link_list.find_element(By.CSS_SELECTOR, selectors['link_list_content_container_selector'])
                 assert link_list_content_container.value_of_css_property('padding') == "0px 15px"
-                assert link_list_content_container.value_of_css_property('margin') == "48px 16px 0px"
+                assert link_list_content_container.value_of_css_property('margin') == "48px 102.188px 0px"
                 print(' - Link list content container styles OK')
 
                 link_list_heading = link_list_content_container.find_element(By.CSS_SELECTOR, selectors['link_list_heading_selector'])
                 assert link_list_heading.value_of_css_property('padding') == "0px"
-                assert link_list_heading.value_of_css_property('margin') == "0px 0px 30px"
+                assert link_list_heading.value_of_css_property('margin') == "36px 0px 30px"
                 assert link_list_heading.value_of_css_property('font-size') == "26px"
                 assert link_list_heading.value_of_css_property('font-weight') == "900"
                 assert link_list_heading.value_of_css_property('line-height') == "29.9px"
