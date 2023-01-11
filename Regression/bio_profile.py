@@ -22,7 +22,7 @@ bio_profile_title_styles = {
 }
 
 bio_profile_role_link_styles = {
-    "color" : "81, 81, 81",
+    "color" : "29, 82, 138",
     "font-size" : "16px",
     "line-height" : "22px",
     "text-decoration-line" : "underline"

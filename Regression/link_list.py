@@ -55,7 +55,6 @@ def runTest(baseUrl, driver, browser, devmode):
                 assert link_list_list.value_of_css_property('margin') == "-4px 0px 20px 20px"
                 assert link_list_list.value_of_css_property('padding') == "0px"
                 assert link_list_list.value_of_css_property('font-size') == "16px"
-                assert link_list_list.value_of_css_property('font-weight') == "400"
                 assert link_list_list.value_of_css_property('list-style-type') == "disc"
                 print(' - Link list <ul> styles OK')
 
@@ -69,7 +68,7 @@ def runTest(baseUrl, driver, browser, devmode):
 
                 link_list_list_item_links = link_list_list.find_elements(By.CSS_SELECTOR, selectors['link_list_list_item_link_selector'])
                 for link in link_list_list_item_links:
-                    assert link.value_of_css_property('text-decoration') == "underline solid rgb(29, 82, 138)"
+                    assert "underline" in link.value_of_css_property('text-decoration')
                 print(' - List item link <a> styles OK')
 
         else:

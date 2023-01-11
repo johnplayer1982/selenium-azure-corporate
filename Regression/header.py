@@ -76,7 +76,7 @@ def desktop_navigation(driver, devmode):
     for menu_item in top_level_desktop_nav_list_items:
 
         menu_item_text = menu_item.find_element(By.CSS_SELECTOR, 'a > span')
-        assert menu_item_text.value_of_css_property('font-family') == "Roboto"
+        assert menu_item_text.value_of_css_property('font-family') == "Roboto, serif"
         check_styles(driver, selector=selectors['menu_list_item_link_selector'], styles=menu_item_text_styles, description='Menu item text')
         print(f' - Checking menu item: {menu_item_text.text}')
         a = ActionChains(driver)
@@ -178,9 +178,10 @@ def runTest(baseUrl, driver, browser, devmode):
         f"{baseUrl}/content/maps/mps/en/jp-test/mps-double-column.html?wcmmode=disabled"
     ]
 
+    resize.resizeDesktop(driver)
+
     for url in component_urls:
         driver.get(url)
-        resize.resizeDesktop(driver)
         time.sleep(1)
         headers = driver.find_elements(By.CSS_SELECTOR, selectors['header_selector'])
 
